@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script defer src="lab5.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+  <h1>Sign up for my newsletter</h1>
+  <P>Put in details to sign up!</P>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <form id="Myform">
+        <div class="form-group">
+          <label for="Firstname">First name:</label>
+          <input type="text" class="form-control" id="firstName">
+        </div>
+        <div class="form-group">
+          <label for="Lastname">Last name:</label>
+          <input type="text" class="form-control" id="lastName">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+          <label for="Password">Password:</label>
+          <input type="password" class="form-control" id="password">
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth:</label>
+          <input type="date" class="form-control" id="dateOfBirth">
+        </div>
+        <button type="button" class="btn btn-primary" id="registerButton">Sign Up!</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <div id="registrationInfo" style="padding: 20px;">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
