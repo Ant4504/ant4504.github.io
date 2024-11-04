@@ -24,18 +24,19 @@ function displaySignUpInfo(user) {
     document.getElementById('registrationInfo').innerHTML = signUpInfo;
 }
 
-document.getElementById('registerButton').addEventListener('click', function() {
+function registerUser() {
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const dob = document.getElementById('dateOfBirth').value;
+
     if (!firstName || !lastName || !email || !password || !dob) {
         alert('ERROR: All fields are required.');
     } else if (!checkPassword(password)) {
         alert('ERROR: Password must contain either "!" or "?".');
     } else if (!checkEmail(email)) {
-      alert('ERROR: Email must contain @')
+        alert('ERROR: Email must contain @');
     } else {
         const user = {
             firstName: firstName,
@@ -46,4 +47,4 @@ document.getElementById('registerButton').addEventListener('click', function() {
         };
         displaySignUpInfo(user);
     }
-});
+}
