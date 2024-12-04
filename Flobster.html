@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coal Comparison</title>
+  <style>
+    /* background page stuff */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #f8ff21;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar style*/
+    nav {
+      background-color: #8B4513; 
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffd700; 
+    }
+
+    /* style */
+    .container {
+      margin-top: 80px; 
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section {
+      width: 80%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color: #544323;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .section img {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .price {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #ffd700;
+    }
+
+    .divider {
+      border-top: 2px solid #ffd700;
+      margin: 20px 0;
+      width: 80%;
+    }
+  </style>
+  <script>
+    async function fetchPrice(apiUrl, elementId, itemId = null) {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        let price;
+        if (itemId) {
+          price = data.data[itemId]?.high;
+        } else {
+          price = data.item?.current?.price;
+        }
+
+        document.getElementById(elementId).textContent = `Price: ${price || 'N/A'} gp`;
+      } catch (error) {
+        document.getElementById(elementId).textContent = 'Failed to fetch price';
+        console.error('Error fetching API data:', error);
+      }
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchPrice("https://prices.runescape.wiki/api/v1/osrs/latest", "osrs-price", 379);
+      fetchPrice("https://api.allorigins.win/raw?url=https://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item=379", "rs3-price");
+    });
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="FHome.html">Home</a>
+    <a href="Flist.html">Items</a>
+    <a href="Fosrsvrs3.html">OSRSvRS3</a>
+  </nav>
+
+  <div class="container">
+    <!-- OSRS -->
+    <div class="section">
+      <div>
+        <h2>Old School RuneScape - Lobster</h2>
+        <p>
+          In OSRS Lobster is a very good healing source for free to play and early to mid game players due to its good heal to price ratio compared to other items in its range.
+        </p>
+        <div id="osrs-price" class="price">Fetching price...</div>
+      </div>
+      <img src="https://oldschool.runescape.wiki/images/thumb/5/58/Lobster.png/30px-Lobster.png" alt="OSRS Lobster">
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RS3  -->
+    <div class="section">
+      <div>
+        <h2>RuneScape 3 - Lobster</h2>
+        <p>
+          In RS3 Lobster is also a good source of healing but due to the changes made in RS3 the price has changed over time, like when there was a massive removal of macroers which was a large amount of the lobster supply and caused the lobster to go from 150-200 up to 330 for a while until the introduction of a npc to aid in fishing which caused a flood of lobsters to enter the grand exchange causing the price to settle at around 170.
+        </p>
+        <div id="rs3-price" class="price">Fetching price...</div>
+      </div>
+      <img src="https://runescape.wiki/images/thumb/Lobster_detail.png/80px-Lobster_detail.png?b2217" alt="RS3 Lobster">
+    </div>
+  </div>
+</body>
+</html>

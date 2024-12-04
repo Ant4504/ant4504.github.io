@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coal Comparison</title>
+  <style>
+    /* background page stuff */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #f8ff21;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar style*/
+    nav {
+      background-color: #8B4513; 
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffd700; 
+    }
+
+    /* style */
+    .container {
+      margin-top: 80px; 
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .section {
+      width: 80%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color: #544323;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .section img {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .price {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #ffd700;
+    }
+
+    .divider {
+      border-top: 2px solid #ffd700;
+      margin: 20px 0;
+      width: 80%;
+    }
+  </style>
+  <script>
+    async function fetchPrice(apiUrl, elementId, itemId = null) {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        let price;
+        if (itemId) {
+          price = data.data[itemId]?.high;
+        } else {
+          price = data.item?.current?.price;
+        }
+
+        document.getElementById(elementId).textContent = `Price: ${price || 'N/A'} gp`;
+      } catch (error) {
+        document.getElementById(elementId).textContent = 'Failed to fetch price';
+        console.error('Error fetching API data:', error);
+      }
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchPrice("https://prices.runescape.wiki/api/v1/osrs/latest", "osrs-price", 453);
+      fetchPrice("https://api.allorigins.win/raw?url=https://services.runescape.com/m=itemdb_rs/api/catalogue/detail.json?item=453", "rs3-price");
+    });
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="FHome.html">Home</a>
+    <a href="Flist.html">Items</a>
+    <a href="Fosrsvrs3.html">OSRSvRS3</a>
+  </nav>
+
+  <div class="container">
+    <!-- OSRS -->
+    <div class="section">
+      <div>
+        <h2>Old School RuneScape - Coal</h2>
+        <p>
+          In OSRS coal is a easily obtainable resource used for smithing, coal is cheaper is osrs than rs3 for the reason that coal is as much in demand compared to RS3 and being such a easily acessible resource that new players can easily mine or experienced players either gain from their kingdom or purchase from npc vendors for 67 gp.
+        </p>
+        <div id="osrs-price" class="price">Fetching price...</div>
+      </div>
+      <img src="https://oldschool.runescape.wiki/images/Coal_detail.png?6771d" alt="OSRS Coal">
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RS3  -->
+    <div class="section">
+      <div>
+        <h2>RuneScape 3 - Coal</h2>
+        <p>
+          In RS3 coal is almost double the price of OSRS coal this was not always the case since before 2019 with some exception the price was around 140-170 gp, but after 2019 with the introduction of the Smithing Autoheater and large use of coal in order to help with smithing and the resurgance of Runescape it created a large demand for coal which affected its price to be around 300 gp. 
+        </p>
+        <div id="rs3-price" class="price">Fetching price...</div>
+      </div>
+      <img src="https://runescape.wiki/images/thumb/4/43/Coal.png/30px-Coal.png" alt="RS3 Coal">
+    </div>
+  </div>
+</body>
+</html>

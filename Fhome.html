@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final</title>
+  <style>
+    /* background page stuff */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #f8ff21;
+      margin: 0;
+      display: flex;
+      justify-content: center; /* Horizontally centers the container */
+      align-items: center; /* Vertically centers the container */
+      height: 100vh; /* Ensures the body takes up full viewport height */
+      flex-direction: column; /* Allows the navbar to stack with the container */
+    }
+
+    /* Navbar style */
+    nav {
+      background-color: #8B4513; 
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffd700; 
+    }
+
+    /* Center page */
+    .container {
+      width: 80%;
+      max-width: 1200px;
+      max-height: 1200px;
+      min-height: 800px;
+      background-color: #544323;
+      padding: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center; /* Centers text and elements inside the container */
+    }
+    h1 {
+      color: #ffd700;
+      margin-bottom: 20px;
+      font-size: 3rem;
+    }
+    
+    /* Title and logos */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .header img {
+      width: 200px;
+      height: auto;
+    }
+    .header h1 {
+      flex: 1;
+      color: #ffd700;
+      font-size: 3rem; 
+      text-align: center;
+    }
+
+    /* Moving text */
+    .scrolling-text {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      animation: scroll-text 5s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes scroll-text {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ffd700;
+      border: none;
+      color: #1e1e1e;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #f1c40f;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="FHome.html">Home</a>
+    <a href="Flist.html">Items</a>
+    <a href="Fosrsvrs3.html">OSRSvRS3</a>
+  </nav>
+  
+  <div class="container">
+    <div class="header">
+      <img src="https://logos-world.net/wp-content/uploads/2021/02/RuneScape-Symbol.png" alt="Runescape Symbol">
+      <h1>Runescape 3 and Old School Runescape Comparison</h1>
+      <img src="https://cdn2.steamgriddb.com/icon_thumb/6c8349cc7260ae62e3b1396831a8398f.png" alt="Runescape Old School Symbol">
+    </div>
+
+    
+    <img src="https://media.tenor.com/ZeliFQLpC_8AAAAM/mining-mlm.gif" alt="OSRS RuneScape GIF" style="max-width: 100%; height: auto;">
+
+    <div class="scrolling-text">
+      /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\_ Anthony L Runescape Site _/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+    </div>
+    <p>
+      Here we will compare 4 items between RS3 and OSRS by discussing their price, history, and changes between the two games.
+    </p>
+    <button onclick="window.location.href='Flist.html';">Start Exploring</button>
+  </div>
+</body>
+</html>
